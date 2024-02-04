@@ -1,1 +1,6 @@
-# Dersler with proff ALP ARDA YALMAN
+# C'de Sergen Proffesyonel olucak.
+
+
+## Prof.
+
+- [@alpardayalman](https://www.github.com/alpardayalman)
