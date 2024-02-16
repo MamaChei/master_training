@@ -1,41 +1,36 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+
+int ft_strlen(char *c)
+{
+    int i=0;
+    while(c[i])
+    {
+        i++;
+    }
+    return i;
+}
+
 int main(int ac,char **av)
 {
-    int j=0,k=0;
-    while(av[2][j])
-    {
-        j++;
-    }
-    if(j>1)
+
+    if (ac != 4) {
+        printf("\n");
         return 0;
-    while(av[3][k])
-    {
-        k++;
     }
-    if(k>1)
+    if (ft_strlen(av[2]) != 1 || ft_strlen(av[3]) != 1)
         return 0;
-    
-    if(ac==4)
+    int i=0;
+    while(av[1][i])
     {
-        int i=0;
-        while(av[1][i])
+        if(av[1][i]==av[2][0])
         {
-            if(av[1][i]==av[2][0])
-            {
-                av[1][i]=av[3][0];
-            }
-            printf("%c",av[1][i]);
-            i++;
-            
+            av[1][i]=av[3][0];
         }
-        
-
+        printf("%c",av[1][i]);
+        i++;
     }
-    else
-        return 0;
     
-
     return 0;
 }
