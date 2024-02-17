@@ -5,7 +5,6 @@
 
 - [@alpardayalman](https://www.github.com/alpardayalman)
 ## ödevler
-- atoi
+- atoi (kendin yaz) ft_atoi
 - fransızca
-- calculator -f=çift sayı
-- geçen haftanın ödevleri
+
