@@ -5,6 +5,7 @@ int ft_strlen(char *a)
 {
     int i=0;
     while(a[i])
+
     {
         i++;
     }
@@ -39,6 +40,7 @@ int ft_strcmp(char *str,char *str2)
 
 int main()
 {
+
     char str[]="absd";
     char str2[]="absd";
     if (!ft_strcmp(str,str2))

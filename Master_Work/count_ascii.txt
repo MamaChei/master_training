@@ -1,0 +1,17 @@
+Assignment name  : ft_count_ascii
+Expected files   : ft_count_ascii.c
+Allowed functions:
+--------------------------------------------------------------------------------
+
+argv = sonsuz deger allabiliyor.
+
+argv tum ascii charlarin kac kere appear ettigini lexicographicaly goster.
+
+orn exe arda sergen
+
+' '. 1
+'a'. 2
+
+....
+
+> file.txt

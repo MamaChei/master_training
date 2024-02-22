@@ -80,7 +80,6 @@ int main()
 }
 
 
-
 struct date lire_date(struct date Date)
 {
     printf("Entrez une date sous la forme jour,mois,annee\n");
