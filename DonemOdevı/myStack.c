@@ -20,9 +20,10 @@ int push(int played, mystack *st) {
     if (is_full(st))
         return 0;
     else {
-        st->turn[st->top] = played;
         st->top++;
-        print_stack(st);
+        st->turn[st->top] = played;
+        if (BUG)
+            print_stack(st);
     }
     return 1;
 }
@@ -32,14 +33,17 @@ int pop(mystack *st) {
         return -1;
     }
     else {
+        int ret = st->turn[st->top];
         st->top--;
-        print_stack(st);
+        if (BUG)
+            print_stack(st);
+        return ret;
     }
-    return 1;
 }
 
 void print_stack(mystack *st) {
     for (int i = 0; i < st->top; i++) {
         printf("%d -> ", st->turn[i]);
     }
+    puts("\n");
 }

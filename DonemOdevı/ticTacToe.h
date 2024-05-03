@@ -4,20 +4,14 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include "myStack.h"
+# include "colors.h"
 
-// bir grid olusturmak lazim.
-// gridin icine sayilari koymak lazim.
-// yenme logini yazmak lazim.
-// 2 ayar olur arkadasa karsi oynamak icin ve bota karsi.
-// bota karsi.
-
-
-void afficher_tableau();
-int donner_son_avis(int quelle_joueur, mystack *);
+char tableau[3][3];
+void remplir_tableau();
 int quelqun_gagne();
-int boucle_de_jeu();
+void afficher_tableau();
+int placer_son_avis(char x_o, int ou, mystack *st);
+int donner_son_avis(int quelle_joueur, mystack *);
+int boucle_de_jeu(int);
 
-
-
-
-#endif
+# endif

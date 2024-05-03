@@ -3,6 +3,8 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
+# define BUG 0
+
 typedef struct mystack_s {
     int turn[9];
     int top;

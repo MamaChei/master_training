@@ -1,6 +1,5 @@
 #include "ticTacToe.h"
 
-char tableau[3][3];
 
 void remplir_tableau() {
     for (int i = 0; i < 3; i++) {
@@ -40,10 +39,10 @@ int quelqun_gagne() {
 
 void afficher_tableau() {
     for (int i = 0; i < 3; i++) {
-        printf("-------------------\n");
-        printf("   | %c | %c | %c |\n", tableau[i][0], tableau[i][1], tableau[i][2]);
+        printf("%s-------------------%s\n",RED, CRESET);
+        printf("%s   | %c | %c | %c |%s\n",RED, tableau[i][0], tableau[i][1], tableau[i][2], CRESET);
     }
-    printf("------------------\n");
+    printf("%s-------------------%s\n",RED, CRESET);
 }
 
 int placer_son_avis(char x_o, int ou, mystack *st) {
@@ -94,23 +93,28 @@ int donner_son_avis(int quelle_joueur, mystack *st) {
     return 0;
 }
 
-
-int boucle_de_jeu() {
-    puts("Le jeux commence!\n");
-    remplir_tableau();
+int boucle_de_jeu(int enemies) {
+    (void)enemies;
+    printf("%sLe jeux commence!%s\n", BHYEL,CRESET);
     mystack *stac = (mystack *)malloc(sizeof(mystack));
     create_stack(stac);
-
+    remplir_tableau();
     int players = 0;
     while(1) {
         donner_son_avis(players++, stac);
         if (quelqun_gagne() == 1)
         {
-            printf("O a gagne.\n");
+            printf("%sO a gagne.%s\n", BHGRN,CRESET);
             exit(1);
         }
+
         else if (quelqun_gagne() == 2) {
-            printf("X a gagne.\n");
+            printf("%sX a gagne.%s\n", BHGRN,CRESET);
+            exit(1);
+        }
+
+        if (is_full(stac)) {
+            printf("%sMatch nul.%s\n", BHCYN,CRESET);
             exit(1);
         }
     }
