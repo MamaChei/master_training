@@ -12,16 +12,31 @@ int ft_strlen(char *a)
 }
 // 10
 void	print_bits(unsigned char octet) {
+int i=8; // 000000000
 
-    int i = 8;
+while(i--)
+{
+    printf("%c",(octet >> i & 1) + '0');
+}
+}
+/*
+    bu fonksiyon int dondurup icine arguman olarak int aliyor.
+    bu fonksiyonun amaci eger verilen arguman ikinin ustu ise True ! False;
 
-    while (i--) {
-        unsigned char bit = (octet >> i & 1) + '0';
-        
-        printf("%c",bit);
-    }
+*/ 
+
+
+/*
+8 = 1000  16 = 10000
+7 = 0101  15 = 01111
+6 = 0010  14 = 01110
+
+*/
+
+int st2(int a) {
+return(!(a & (a-1)));
 }
 
 int main() {
-    print_bits(1);
+    printf("%d",st2(16));
 }
