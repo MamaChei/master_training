@@ -58,6 +58,28 @@ int placer_son_avis(char x_o, int ou, mystack *st) {
     return 0;
 }
 
+int donner_son_avis_bot(int joueur, mystack *st) {
+    if (joueur % 2 == 0) {
+        afficher_tableau();
+        int quelle_carre;
+        printf("Donner une nombre entre 1-9\n");
+        printf("Clicker 0 pour replacer.\n");
+        fflush(stdin);
+        scanf("%d", &quelle_carre);
+            if (placer_son_avis('X', quelle_carre, st))
+                donner_son_avis_bot(joueur, st);
+        }
+    else {
+        int quelle_carre = rand() % 10;
+        if (!quelle_carre)
+            donner_son_avis_bot(joueur, st);
+        if (placer_son_avis('O', quelle_carre, st))
+            donner_son_avis_bot(joueur, st);
+    }
+    return 0;
+}
+
+
 int donner_son_avis(int quelle_joueur, mystack *st) {
     afficher_tableau();
     (void)quelle_joueur;
@@ -66,7 +88,7 @@ int donner_son_avis(int quelle_joueur, mystack *st) {
     printf("Clicker 0 pour replacer.\n");
     fflush(stdin);
     scanf("%d", &quelle_carre);
-    printf("\n%c\n", quelle_carre);
+    // printf("\n%c\n", quelle_carre);
 
     if (quelle_carre >= 0 && quelle_carre <= 9) {
         if (quelle_carre == 0) {
@@ -96,25 +118,36 @@ int donner_son_avis(int quelle_joueur, mystack *st) {
 int boucle_de_jeu(int enemies) {
     (void)enemies;
     printf("%sLe jeux commence!%s\n", BHYEL,CRESET);
-    mystack *stac = (mystack *)malloc(sizeof(mystack));
-    create_stack(stac);
     remplir_tableau();
     int players = 0;
+
+    mystack *stac = (mystack *)malloc(sizeof(mystack));
+    create_stack(stac);
     while(1) {
-        donner_son_avis(players++, stac);
-        if (quelqun_gagne() == 1)
-        {
-            printf("%sO a gagne.%s\n", BHGRN,CRESET);
-            exit(1);
+        if (enemies == 1) {
+            donner_son_avis_bot(players++, stac);
+        }
+        else {
+            donner_son_avis(players++, stac);
         }
 
+        if (quelqun_gagne() == 1)
+        {
+            afficher_tableau();
+            printf("%sO a gagne.%s\n", BHGRN,CRESET);
+            free(stac);
+            exit(1);
+        }
         else if (quelqun_gagne() == 2) {
+            afficher_tableau();
             printf("%sX a gagne.%s\n", BHGRN,CRESET);
+            free(stac);
             exit(1);
         }
 
         if (is_full(stac)) {
             printf("%sMatch nul.%s\n", BHCYN,CRESET);
+            free(stac);
             exit(1);
         }
     }
